@@ -2,8 +2,8 @@ package helloworld;
 
 public class Car {	
 	
-	String model;
 	String make;
+	String model;
 	int year;
 	String color;
 	int speed;
@@ -11,11 +11,11 @@ public class Car {
 	private String VIN;
 	static String emergencyNumber = "911";
 	
-	public Car(String model, String make, int year, String color) {
+	public Car(String make, String model, int year, String color) {
 	
 		super();
-		this.model = model;
 		this.make = make;
+		this.model = model;
 		this.year = year;
 		this.color = color;
 		this.speed = 0;
@@ -23,9 +23,9 @@ public class Car {
 		VIN = String.valueOf((int)(Math.random()*1000));
 	}
 	
-	public Car(String model, String make, String color, int year) {
+	public Car(String make, String model, String color, int year) {
 		
-		this(model, make, year, color);
+		this(make, model, year, color);
 	}
 
 	public static void main(String[] args) {
