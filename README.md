@@ -5,7 +5,7 @@
 - **Java**
 - **R**
 - **Python**
-#### Also work in **mySQL** and **MongoDB**, as well as **Linear Algebra & Calculus.
+#### Also work in **mySQL** and **MongoDB**, as well as **Linear Algebra & Calculus**.
 #### Using a variety of Development Environments, including:
 - **RStudio**
 - **Eclipse IDE for Java**
