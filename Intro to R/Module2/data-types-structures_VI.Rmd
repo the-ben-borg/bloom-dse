@@ -12,9 +12,161 @@ output:
 
 # Data Frame
 
+  - Gives us a tabular data structure.
+  
+## Create Data Frames
 
+  - It is, in simple terms, a list of vectors of equal length.
+  - `data.frame()` to create
+  - Each vector in the list is a separate **column**.
+  
+```{r}
+a = c(1, 2, 3, 4)
+b = c(T, F, T, T)
+s = c("one", "two", "three", "four")
+df = data.frame(a, b, s)
+df
+```
 
 ```{r}
+typeof(df)
+```
+  - Useful functions for getting info about a data frame:
+  
+```{r}
+names(df) # names of columns
 
+row.names(df) # names of rows
+
+ncol(df) # number of rows
+
+nrow(df) # number of columns
+
+length(df) # length is same as number of columns
+```
+```{r}
+df = data.frame(a = 1:5, b = 5:9, c = c(T,F,T,T,F), d = c("one", "two", "three", "four", "five"))
+df
+```
+  
+  - `str()` shows the structure of a data frame. "5obs" means 5 rows. "4 variables" means 4 columns. Column type and values are printed.
+  
+```{r}
+str(df)
+```
+
+  - `data.frame()` converts strings to factors. Pass in `stringsAsFactors=FALSE` in `data.frame()` to avoid this.
+  
+```{r}
+df = data.frame(a = 1:5, b = 5:9, c = c(T,F,T,T,F), d = c("one", "two", "three", "four", "five"), stringsAsFactors = FALSE)
+str(df)
+```
+
+  - `[]` **preserves** data type; output is same as input.
+  - `[[]]` **simplifies** data type, returns the simplest possible structure that can represent the output.
+  
+```{r}
+df
+
+df["a"]
+
+
+```
+
+```{r}
+df[1]
+```
+
+```{r}
+df$a
+```
+
+```{r}
+df[["a"]]
+```
+
+```{r}
+df[[1]]
+```
+
+  - Data Frames can be accessed with row and column indexing:
+
+```{r}
+df[1, 2] # gives element at 1st row and 2nd column index
+
+df[2, ] # gives the entire 2nd row
+
+df[, 1] # gives the 1st column
+
+# Use the drop = FALSE argument tot he index operator to return a dataframe rather than a vector.
+
+df[, 1, drop = FALSE]
+```
+
+  - Vectors of indices work too.
+```{r}
+df[1:2,2:3]
+```
+  
+  - **Negative Indexing**
+```{r}
+df[-1, ]
+```
+  
+## Modify a Data Frame
+
+  - Modify through **reassignment**, like vectors and matrices.
+
+```{r}
+df[1,2] = 10
+```
+
+  - Add rows or cols with `rbind()` or `cbind()`:
+```{r}
+df = rbind(df, list(11, 12, FALSE, "six"))
+df
+```
+  
+```{r}
+df = cbind(df, e = 15:20)
+df
+```
+
+## Delete Elements
+
+  - Assign a column the `NULL` value to delete them.
+  
+```{r}
+df$e = NULL
+df
+```
+  
+  - Also, **reassignment** will delete rows.
+```{r}
+df = df[-1, ]
+df
+```
+  
+## Build-in Data Frame
+
+  - `mtcars` and `iris` are built-in data frames to use.
+  
+```{r}
+str(mtcars)
+```
+
+```{r}
+str(iris)
+```
+
+  - Use `head` to see the first few lines of a data frame. 
+  - Use `tail` to see the last few lines.
+  
+```{r}
+head(mtcars)
+```
+
+```{r}
+tail(mtcars)
 ```
 
