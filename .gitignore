@@ -84,6 +84,10 @@ local.properties
 .scala_dependencies
 .worksheet
 
+# RStudio entries
+*.RData
+*.Rhistory
+
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
 #.project
