@@ -1,0 +1,205 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+# Matrix
+
+  - **Matrix** : a collection of data elements arranged in a 2-D rectangular layout. Like a **vector**, but contains a *dimension* attribute.
+
+## Create a Matrix
+
+  - `matrix()` function creates matrices. Arguments ***nrow*** and ***ncol*** take values to define the dimensions.
+  - Passing only one argument value leads the function to infer the other.
+
+```{r}
+m = matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+m
+```
+
+  - Use `byrow = TRUE` to fill the matrix by row, instead of column which is the default.
+  
+```{r}
+m = matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2, byrow = TRUE)
+m
+```
+
+  - Also, the functions `cbind()` and `rbind()` are available to create matrices. They take two or more vectors of the same length and bind them column-wise or row-wise respectively.
+  
+```{r}
+x = cbind(c(1,2,3), c(4,5,6))
+x
+
+y = rbind(c(1,2,3), c(1,2,3))
+y
+```
+
+## Dimension Attributes
+
+  - `dim()` function sets dimension attribute.
+  
+```{r}
+attributes(m) # 3 rows, 2 columns
+
+dim(m)
+
+dim(m)[1]
+
+dim(m)[2] # number of columns
+
+```
+
+  - Change a vector into a matrix by giving it a dimension attribute using `dim()`.
+
+```{r}
+v = 1:6
+dim(v) = c(2, 3) # 2 rows, 3 cols
+v
+
+is.matrix(v)
+```
+
+## Naming Matrix rows and columns
+
+  - Pass a **2-element list** to the `dimnames` argument of `matrix()`, **row names, then col names**.
+  
+```{r}
+m <- matrix(1:9, nrow = 3, dimnames = list(c("X", "Y", "Z"), c("A", "B", "C")))
+m
+```
+
+  - Get dimension names with `dimnames()`. 
+  - Access and change these names with `colnames()` and `rownames()`
+  
+```{r}
+dimnames(m)
+
+rownames(m)
+colnames(m)
+
+# changing row and columns names:
+
+rownames(m) = c("X1", "Y1", "Z1")
+colnames(m) = c("A1", "B1", "C1")
+dimnames(m)
+```
+
+  - `attributes()` gives the names and dimensions of a matrix. Use `str()` for more detailed info:
+  
+```{r}
+attributes(m)
+
+str(m)
+```
+  
+## Access to Matrix Elements
+
+  - `[]` used thus: `var[row, column]`
+  - Get multiple elements by placing a *vector* in `[]`.
+  
+```{r}
+m[c(1, 2), c(1, 2)]
+
+m[1:2, 1:2]
+
+# if column field is blank, it will select all columns
+
+m[c(1,2), ]
+
+m[1,] # first row only
+
+m[,1] # first column only
+
+m[,] # whole matrix
+
+# negative indices exclude that row/column, like vector.
+
+m[-1,]
+```
+
+  - `drop = FALSE` passed to `[]` returns the indexed matrix as a *matrix* and not a *vector*:
+  
+```{r}
+m[1,]
+m[1, , drop = FALSE]
+
+```
+  
+  - Possible to index a matrix with a vector. It stacks columns of a matrix one after the other, and returns a **vector**. 
+  
+```{r}
+m = matrix(1:9)
+
+m[1:4]
+
+m[c(2,3,5,7)]
+```
+- Use **names** to access elements, similarly to vectors.
+
+```{r}
+m <- matrix(1:9, nrow=3, dimnames = list(c("X","Y","Z"), c("A","B","C")))
+m[,"A"]
+
+m[c("X", "Y"), c("A", "B")]
+```
+
+  - **Logical vectors** can access matrix elements. Indexing vectors are used, with logical values, like a *mask* to access values where `TRUE` is mapped.
+  
+```{r}
+m[c(TRUE,FALSE,TRUE), c(TRUE,TRUE,FALSE)]
+
+m[c(T,F), c(F,T,F)] # recycles as c(T,F,T), c(F,T,F)
+
+m[c(T,F,T), c(2, 3)]
+
+m[c(T,F,T), c("A", "C")]
+
+```
+  
+## Modify a Matrix
+
+```{r}
+m = matrix(1:9, nrow=3)
+m
+
+m[2,2] = 0
+m
+```
+
+  - **Transpose** a matrix with `t()`.
+
+```{r}
+t(m)
+```
+
+  - `rbind()` and `cbind()` are used here to add a row or column, or alternatively, remove them.
+  
+```{r}
+m = cbind(m, D = c(0,0,0)) # add column D
+m
+
+```
+```{r}
+m = m[,1:3] # remove the fourth column
+m
+```
+  
+  - Alter the **dimensions** of a matrix:
+```{r}
+m = matrix(1:6, nrow = 3)
+m
+```
+  
+```{r}
+dim(m) = c(2,3)
+m
+```
+  
+  

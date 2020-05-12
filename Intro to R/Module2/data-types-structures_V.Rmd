@@ -1,0 +1,62 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+# Factors
+
+  > Factor is a data structure used for fields that take on only a **predefined**, finite number of values, i.e. **categorical data**. 
+  
+## Create a factor
+
+  - `factor()` to create | `levels()` to check levels
+  
+```{r}
+blood_type = factor(c("A", "B", "AB", "O", "O", "B", "AB"))
+blood_type
+
+levels(blood_type)
+```
+## Properties of Factor
+
+  - `typeof()` on a factor yields *integer*. `str()` shows the levels in a character vector, with each element stored as an integer index.
+  
+```{r}
+typeof(blood_type)
+str(blood_type)
+```
+
+## Modify a Factor
+
+  - Similar to vectors for accessing and modifying elements.
+  - A factor can take on values that are listed in its `levels` atrribute.
+  
+```{r}
+x = factor(c("a", "b", "a", "b"))
+x
+
+```
+
+```{r}
+x[5] = "b"
+x
+```
+
+```{r}
+x[6] = "c" # gives error, as "c" is not a level
+```
+
+```{r}
+# update the levels first:
+levels(x) =c(levels(x), "c")
+x[6] = "c"
+x
+```
+

@@ -1,0 +1,171 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+## Logical, used to store TRUE or FALSE
+- You can use **T** or **F** as well.
+
+```{r}
+v = TRUE
+print(v)
+typeof(v)
+```
+
+#### R is case sensitive.
+
+## Numeric, used to store real values
+
+```{r}
+v <- 23.5
+print(v)
+typeof(v)
+```
+
+## Integer, used to store integer values
+
+```{r}
+v <- 5L
+print(v)
+typeof(v)
+```
+
+- Creating an integer without the **L suffix** will create it as **Numeric**.
+
+```{r}
+v = 5
+typeof(v)
+```
+
+## Character, used to store characters or strings
+- Both single and double quotes are acceptable.
+
+```{r}
+v <- "data"
+typeof(v)
+```
+
+## Complex, used to store **complex** values
+
+```{r}
+v <- 2 + 3i
+print(v)
+typeof(v)
+```
+
+## Raw, used to store **raw values**; *not very important*
+
+```{r}
+v <- charToRaw("Hello")
+print(v)
+typeof(v)
+```
+
+# Section 2
+## Atomic Vectors
+
+### Create Vectors
+
+```{r}
+v = c(1, 2, 3, 4)
+v
+```
+
+```{r}
+v = c(1:100) # creates a vector with numbers 1 through 100
+# v = 1:100 also works.
+v
+```
+
+1. Create a vector using `v = 4.5:10.5` and `v = 4.5:11.3`:
+```{r}
+v = 4.5:10.5
+r = 4.5:11.3
+
+v
+r
+```
+
+2. What does the function `seq()` do? (HINT: Read `seq()` docs)
+- `seq()` generates a numerical sequence from the first argument to the second.
+
+3. What does `v = c()` do? What is `NULL` ?
+```{r}
+v = c()
+v
+```
+
+-- `NULL` is an object in R that is returned sometimes by expressions and/or functions that have a value of *undefined*.
+
+## Vector Properties
+  - `typeof()` to access data type contained in the vector;
+  - `length()` to access the number of elements in the vector;
+  - `attributes()` to access add'l metadata on the vector
+  
+##### Numeric Vector
+```{r}
+num_vec = c(1, 2, 3, 4)
+num_vec
+
+typeof(num_vec)
+length(num_vec)
+attributes(num_vec)
+
+```
+
+##### Character Vector
+```{r}
+char_vec = c("aa", "bb", "cc", "dd", "ee")
+char_vec
+
+typeof(char_vec)
+length(char_vec)
+attributes(char_vec)
+
+
+```
+
+##### Logical Vector
+
+```{r}
+log_vec = c(T, F, F, T)
+log_vec
+
+typeof(log_vec)
+length(log_vec)
+attributes(log_vec)
+
+```
+
+Use the following functions to query the type of a vector for a boolean result:
+  - `is.atomic()` -- tells if a vector is **atomic** or not;
+  - `is.numeric()` -- is the data type **Numeric** or not;
+  - `is.double()` -- is the data type **Double Float** or not;
+  - `is.logical()` -- is the data type **Logical** or not;
+  - `is.integer()` -- is the data type **Integer** or not;
+  - `is.character()` -- is the data type **Character** or not
+  
+## Accessing Elements of a Vector
+#### Indexing Operator `[]` 
+  -- Indices in **R** start with **1** **(!!)**
+
+```{r}
+v = c(1, 2, 3, 4, 5, 6, 7, 8)
+v[1] # prints first element
+v[c(1,2)] # prints 1st and 2nd elements
+v[2:5] # prints 2nd element to the 5th
+v[-1] # prints all elements except the 1st
+v[-1:-3] # prints all elements except 1 to 3
+v[-c(3, 1)] # prints all except 1st and 3rd
+v[c(2.5, 4.6)] # real numbers are truncated to integers; prints 2nd and 4th elements
+# v[c(2, -4)] # Error; cannot use negative and positive indices.
+```
+
+
+  

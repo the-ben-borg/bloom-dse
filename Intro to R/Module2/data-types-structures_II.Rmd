@@ -1,0 +1,164 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+## Modifying a Vector
+
+- Modify in R using the **assignment operator**, `<-` or `=` .
+
+
+
+```{r}
+v = c(1:6)
+v[2] = 12 # modify second element
+v[1:3] =5 # modify elements from 1 to 3
+v = v[1:4] # truncate vector to first 4 elements
+v = c(v, 5, 6, 7)
+v
+```
+
+Increase the length of a vector by **assigning** another element to the vector:
+
+```{r}
+v = 1:3
+v[4] = 4
+v
+```
+
+```{r}
+v = 1:3
+v[5] = 5
+v[4]
+```
+
+```{r}
+v = 1:5
+length(v)
+
+length(v) = 7
+v
+```
+
+## Delete a Vector
+
+Delete a vector by **assiging it the value `NULL`**, or use the `rm()` function. The latter will completely remove an object from the workspace.
+
+```{r}
+x = c(1:4)
+x = NULL # assigns NULL to vector x
+x # returns NULL
+
+rm(x) # completely remove x
+# x # Should error since it has been removed
+```
+
+## `str()` function
+
+`str()` stands for **structure**. "What is this object?" -- gives contents of an object in abbreviated form.
+
+```{r}
+v = c(1:5)
+str(v)
+```
+
+```{r}
+x = c(1, 2, 3, 4, 5)
+str(x)
+```
+
+## Vector Manipulation
+
+```{r}
+v = c(3,4,6,7,8)
+x = 1:5
+v + x
+
+v - x
+
+v/x
+
+v*x
+
+```
+
+```{r}
+v = c(2,3,5,6,7,9)
+x = 1:2
+
+v+x
+
+v-x
+
+v/x
+
+v*x
+
+```
+
+## Coercion
+- Combining a character and an integer yields a character, for example:
+
+```{r}
+v = c('a', 1, 3)
+v
+typeof(v)
+```
+
+- Logical vector coercion: **TRUE becomes 1**; **FALSE becomes 0**. Use `as.numeric()` to explicitly convert from logical to numeric.
+
+```{r}
+v = c(5, T, F)
+v
+x = c(T,F,F,T,F)
+as.numeric(x) # convert the logical vector x to numeric
+
+```
+
+## Vectors of length 1
+
+- Variable assignment `v = 3` does not create a numeric variable with value 3 as in other languages. It creates a vector object of length 1 and type numeric. *One cannot create a variable of primitive data types in R.*
+
+#### Questions:
+
+1. Create a vector v containing the integers from 1 to 10. What will the following subset operations give? v[] and v[0]
+
+```{r}
+v = 1:10
+v[]
+v[0]
+```
+
+
+2. Define a vector v = c(1, 4, 5, 7). It has length 4. What will happen if we try to access an element which is out of index, like v[5] or v[10]? 
+
+```{r}
+v = c(1, 4, 5, 7)
+v[5]
+v[10]
+```
+
+
+3. What do the sort, sum, mean, sd, max, min functions do?
+
+  - `sort()` orders vectors in asc or desc order.
+  - `sum()` returns the sum of all present values.
+  - `mean()` returns the trimmed arithmetic mean.
+  - `sd()` returns the standard deviation of values in a numeric vector or R object.
+  - `max()` returns the max value in a vector.
+  - `min()` returns the min value in a vector.
+
+4. What do `which.max` and `which.min` do? **important**
+
+  - The `which` prefix on max and min has the function return the *location* or *index* of the first min or max value of a numeric or logical vector.
+  
+
+
+ 

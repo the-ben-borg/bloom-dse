@@ -85,8 +85,20 @@ local.properties
 .worksheet
 
 # RStudio entries
-*.RData
-*.Rhistory
+.RData
+.Rhistory
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+### R.Bookdown Stack ###
+# R package: bookdown caching files
+/*_files/
 
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:

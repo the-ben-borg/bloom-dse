@@ -1,0 +1,90 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+# Lists
+## Creating Lists
+
+- `list()` instead of `c()`, as with vectors.
+
+```{r}
+l = list("king", "string", c(1, 2, 3, 4), TRUE, FALSE)
+l # print list
+length(l)
+
+```
+
+1. Can lists contain lists?
+
+```{r}
+l = list(1, 3, "this", FALSE)
+nl = list(l, 2, FALSE)
+l
+nl
+```
+
+2. Can vectors contain lists?
+
+```{r}
+v = c(l, 2, 3, 4, 5)
+v
+typeof(v)
+```
+
+3. 
+```{r}
+v = c(list("king", "string", c(1, 2, 3, 4), TRUE, FALSE), list("sing", "song", c(3, 4, 6, 9)))
+v
+```
+
+4. 
+```{r}
+list(1:5)
+```
+
+## Accessing List Elements
+
+`[]` and even `[[]]`, the last returns an *element* of the list.
+
+```{r}
+l = list("king", "string", c(1,2,3,4), TRUE, FALSE)
+
+l[1] # will print as if a list is printed
+l[2]
+l[1:2]
+l[[1]]
+l[[2]]
+# l[[1:2]]
+```
+
+- List elements can be **named**, and accessed by their names.
+  - `names()` or `attributes()` functions
+  
+```{r}
+s = list(ints=1:3, chars="king", logical=c(T,F,T))
+s
+
+
+```
+
+- Use `$` operator to access individual list elements:
+
+```{r}
+s[[1]]
+s[["ints"]]
+s$ints
+s[["chars"]]
+s$chars
+s[["logical"]]
+s$logical
+
+```
+
