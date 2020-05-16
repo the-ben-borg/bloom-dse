@@ -1,0 +1,46 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+# Control Structures
+
+## if, else Statements
+
+  - R's `if` statement only takes a vector of length one.
+  - It is best to use vectors of length one in the `test condition`.
+  - Use `ifelse` to test a condition on vectors of length greater than one.
+
+```{r}
+x = 10
+
+if(x > 0){
+  print("x is Positive")
+} else if(x < 0){
+  print("x is Negative")
+} else {
+  print("x is zero")
+}
+
+```
+
+## ifelse Function
+
+  - **Vectorization** of a function is to take a vector as input, and alike return a vector. Vectorized functions is much faster than looping directly over the elements of a vector.
+  - The *vector equivalent* of `if`, `else` statements is the `ifelse()` function.
+  
+  - The `test expression` must be a logical vector (or somehow coercible). `ifelse()` returns a vector of the same length as the `test expression`. 
+
+
+```{r}
+x = c(5, 0, 2, 3)
+ifelse(x %% 2 == 0, "even", "odd")
+```
+

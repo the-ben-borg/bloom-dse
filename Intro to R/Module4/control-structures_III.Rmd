@@ -1,0 +1,69 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+# Control Structures III
+
+## break and next statement
+
+  - `break` is used to stop a loop iteration completely, and continue on to the next command after the loop.
+  
+  - Loop is breaked after `i` becomes greater than `10`.
+
+```{r}
+x = 1:15
+for(i in x){
+  if(i > 10)
+    break
+  print(i)
+}
+
+```
+
+  - `next` is used to skip the current iteration of the loop, and not terminate the loop completely, and continue to the next iteration.
+
+```{r}
+x = 1:5
+
+for(i in x){
+  if(i == 2){
+    next
+  }
+  print(i)
+}
+```
+
+## repeat Loop
+  - iterate over a block of code multiple times. No stop condition test.
+  - Instead, an explicit condition is put in the body of the loop, and `break` is used to exit it.
+  - Failure to do so will result in an **infinite loop**.
+  
+```{r}
+x = 0
+repeat{
+  print(x)
+  x = x + 1
+  if(x > 10)
+    break
+}
+
+```
+
+  - This loop is basically the same as below, with fewer lines of code:
+```{r}
+x = 0
+while(x <= 10){
+  print(x)
+  x = x + 1
+}
+```
+  
+  

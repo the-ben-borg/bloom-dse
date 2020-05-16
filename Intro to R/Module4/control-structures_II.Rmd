@@ -1,0 +1,63 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+# Control Structures II
+
+## for Loop
+
+  - To repeat a block of code a specified number of times.
+
+  - The `sequence_vector` is a vector; the `loop_variable` takes on the value of each element during the loop.
+  - `statement` gets evaluated.
+```{r}
+# Count the number of even elements in x
+
+x = c(1, 2, 4, 5, 9, 7, 8)
+
+count = 0
+for(i in x){
+  if(i %% 2 == 0)
+    count = count+1
+}
+
+count
+
+```
+  - Nest a `for` loop inside another. Here, create a 10 x 10 matrix, assigning the value of each elementin the matrix the product of its row and column.
+  
+```{r}
+a = matrix(nrow=10, ncol=10) # creates a 10 x 10 matrix
+
+for(i in 1:dim(a)[1]) # one for each row
+{
+  for(j in 1:dim(a)[2]) # for each column
+  {
+    a[i, j] = i*j # assign as value the product of row and column index
+  }
+}
+
+a
+```
+
+## while Loop
+
+  - `while` loop is run until a condition is met.
+  
+```{r}
+i = 10
+while(i > 0){
+  print(i)
+  i = i - 1
+}
+```
+  
+  
