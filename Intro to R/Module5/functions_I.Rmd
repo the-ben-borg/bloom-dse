@@ -1,0 +1,70 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+# Functions I
+
+  - Functions are self-contained blocks of code written to do a specific task.
+  
+## Writing Functions
+
+  - A sample function to calculate exponents:
+
+```{r}
+pow <- function(x, y) {
+  print(x^y)
+}
+
+pow(2, 3)
+pow(4, 2)
+
+```
+
+## Function Arguments
+
+  - Arguments in a function declaration are known as **formal arguments**. Those written into a function call directly are **actual arguments** .
+  - Get all of the formal arguments of a function with `formals()`.
+  
+```{r}
+formals(pow)
+```
+
+  - Pass `all.names = TRUE` to `ls()` to see the hidden variables in an R environment.
+  - `stringsAsFactors` in the `data.frame()` function will prevent strings from converting to factors by default.
+  - The `matrix()` function can use `byrow` argument to fill a matrix by rows.
+  - **Positional order** is used to match formal arguments to actual arguments in a function call.
+  - **Named arguments** : positional order does not matter. The formal argument names are used to match to actual arguments directly.
+  
+```{r}
+pow(x = 2, y = 3)
+pow(y = 3, x = 2)
+```
+
+  - In a call using both named and unnamed arguments, the named arguments are matched first, and then the unnamed arguments are matched in positional order.
+  
+```{r}
+pow(2, y = 3)
+pow(x = 2, 3)
+```
+
+  - **Default parameters** can be defined in the function declaration by giving a value to the argument directly.
+  
+```{r}
+pow <- function(x = 2, y = 2) {
+  print(x^y)
+}
+
+pow()
+pow(2)
+pow(, 3)
+
+```
+

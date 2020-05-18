@@ -1,0 +1,138 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+## Return value of a function
+
+  - `return()` function returns a value in R.
+
+```{r}
+pow <- function(x = 2, y = 2) {
+  # function to return x raised to the power of y
+  
+  return(x^y)
+}
+
+pow(2,3)
+
+```
+
+  
+```{r}
+var = pow(2,3)
+var
+```
+
+  - In the absence of *explicit returns* from a function, the **value of the last evaluated expression** is returned.
+  
+```{r}
+pow <- function(x = 2, y = 2) {
+  x^y
+}
+
+var = pow(2, 3)
+var
+```
+
+  - To return multiple values, use a **list**.
+
+```{r}
+marble <- function(color, size) {
+  my_list <- list(color = color, size = size)
+  return(my_list)
+}
+
+x = marble("red", 10)
+x
+```
+
+  - To avoid confusion between the names of list elements and names of parameters, it is best practice to give the names of **list elements** in *quotes*.
+  
+```{r}
+marble <- function(color, size) {
+  my_list <- list("color" = color, "size" = size)
+  return(my_list)
+  
+}
+
+x = marble("red", 10)
+x
+```
+
+#### Exercises
+
+  1. Write a function `check()` which checks whether a given integer is positive, negative, or zero. The function should take one parameter x and print the output.
+  
+```{r}
+check <- function(num) {
+  if (num > 0) {
+    print("Positive")
+  } else if (num < 0) {
+    print("Negative")
+  } else {
+    print("Zero")
+  }
+}
+
+check(3)
+check(-3)
+check(0)
+```
+  
+  2. Write a function that takes 2 parameters, `rows` and `cols`, and returns a matrix with its elements assigned to the value you get from multiplying the row and column of that element.
+
+  
+```{r}
+maketrix <- function(rows, cols) {
+  l <- list()
+  ct <- 1
+  r <- c(1:rows)
+  c <- c(1:cols)
+  for (i in c) {
+    for (j in r) {
+      l[[ct]] <- c(i*j)
+      ct <- ct + 1
+    }
+  }
+  m <- matrix(l, nrow=rows, ncol=cols)
+  return(m)
+}
+
+maketrix(5, 4)
+```
+
+## Are Functions also objects in R?
+
+  - Functions are, in fact, **first class objects** .
+  
+### Environment
+
+  - An R environment can be thought of as a *collection of objects*. Environments are created when the **R interpreter** starts. 
+  - `R_GlobalEnv` : the top-level environment at the R command prompt.
+    - Accessed using `.GlobalEnv` in R scripts.
+  - `environment()` function gets the current environment.
+    - Prints out `<environment:R_GlobalEnv>`
+
+## Three components of functions
+
+  1. **formal argument list**: `formals()` - list of arguments that controls how you can call the function.
+  2. **body**: `body()` - the code inside the function.
+  3. **environment**: `environment()` - environment in which the function is created.
+  
+  - `formals()` lists the formal arguments of a function.
+  - `body()` - prints the code inside the function.
+  
+  - The environment of a function is the one that was active at the time the function was created.
+  
+  
+  
+
+  
