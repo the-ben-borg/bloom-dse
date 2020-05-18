@@ -132,7 +132,49 @@ maketrix(5, 4)
   
   - The environment of a function is the one that was active at the time the function was created.
   
-  
-  
+```{r}
+pow <- function(x = 2, y = 2) {
+  return(x^y)
+}
 
+formals(pow)
+
+body(pow)
+
+environment(pow)
+```
+
+  - **Exception** 
+    > **Primitive functions**, like `sum()`, call **C** code directly with `.Primitive()` and contain no **R** code. `formals()`, `body()`, and `environment()` return `NULL` for such functions.
+    
+```{r}
+body(sum)
+formals(sum)
+environment(sum)
+```
+
+
+  - `is.primitive()` function checks whether a function is primitive or not.
   
+```{r}
+is.primitive(pow)
+
+is.primitive(sum)
+```
+  
+## Function Application
+
+  - Apply a function to each element in a data structure:
+    - for loop, perhaps;
+    - `sapply` function:
+    
+      - `sapply` takes a vector or list as input, a function to apply element-wise along the data structure, and arguments for the function.
+      
+```{r}
+vec = 1:5
+
+sapply(vec,pow,y=2) # square each element
+
+```
+    
+    
