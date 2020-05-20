@@ -1,19 +1,23 @@
 # Recursive function to print first 8 Fibonacci numbers
+
 seq = []
 
 def fib(n):
-    a = n
-    if (n <= 0):
-        print("Fibonacci by Recursion: ", seq)
+    a = 0
+    if (n >= a):
+        for i in range(0, n):
+            a = fib(i+1) + fib(i+2)
+            seq.append(a)
 
-    else:
-        a = fib(n - 1) + fib(n - 2)
-        seq.append(a)
-    return a
+    print(seq)
+
+    return n - 1
+
+
+
 
 
 # Iterative function to print first 8 Fibonacci numbers
-
 
 def fibonacci_loop(n):
     a = 0
