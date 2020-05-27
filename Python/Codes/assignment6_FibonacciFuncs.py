@@ -1,20 +1,16 @@
 # Recursive function to print first 8 Fibonacci numbers
-
 seq = []
 
 def fib(n):
-    a = 0
-    if (n >= a):
-        for i in range(0, n):
-            a = fib(i+1) + fib(i+2)
-            seq.append(a)
-
-    print(seq)
-
-    return n - 1
-
-
-
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        f = fib(n-1) + fib(n-2)
+        seq.append(f)
+        return n - 1
+        print(seq)
 
 
 # Iterative function to print first 8 Fibonacci numbers
