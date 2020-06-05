@@ -13,3 +13,4 @@
 - **Eclipse IDE for Java**
 - **Pycharm**
 
+![Graph of function and secant line in Matplotlib with **ggplot** style on grid.](linear-algebra/Figures/assignment4-secantLine-6.png "Secant of a function")
