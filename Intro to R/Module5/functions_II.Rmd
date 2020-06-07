@@ -1,13 +1,13 @@
 ---
 title: "Indiana Bloomington DSE R Notebook"
 output: 
-  output: 
   rmdformats::readthedown:
     self_contained: true
     thumbnails: true
     lightbox: true
     gallery: false
     highlight: tango
+   
 ---
 
 ## Return value of a function
@@ -66,7 +66,7 @@ marble <- function(color, size) {
 x = marble("red", 10)
 x
 ```
-
+***
 #### Exercises
 
   1. Write a function `check()` which checks whether a given integer is positive, negative, or zero. The function should take one parameter x and print the output.
