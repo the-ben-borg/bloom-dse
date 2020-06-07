@@ -1,1 +1,2 @@
 *.Rmd linguist-detectable
+*.ipynb linguist-language=Python
