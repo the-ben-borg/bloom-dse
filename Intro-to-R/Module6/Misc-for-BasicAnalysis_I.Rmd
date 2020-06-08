@@ -1,0 +1,176 @@
+---
+title: "Indiana Bloomington DSE R Notebook"
+output: 
+  output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+## Simulation(1)
+  - Some common simulation functions:
+
+  - Create a sample dataset with a class of 100 students, including student id, age, gender,     and grade variables.
+
+```{r}
+# generate fake students
+
+students = data.frame(id = 1:100,
+                      age = as.integer(rnorm(100, mean = 25, sd = 6)),
+                      gender = sample(c("Male", "Female"), 100, replace = TRUE),
+                      grade = sample(LETTERS[1:5], 100, replace = TRUE)
+                      )
+students
+```
+#### rnorm function
+`rnorm()` generates a random normal variable. 
+  - takes 3 arguments;
+  - (num-of-elements-to-generate, mean, standard-deviation of normal dist)
+  
+#### runif function
+`runif()` generates uniform random variates.
+  - Takes 3 arguments:
+    - (num-elements-to-gen, max-value, min-value)
+    
+```{r}
+runif(10, 5, 15)
+```
+
+#### sample function
+**Sampling** is the process of choosing a subset of a set of observations.
+  - With replacement - a population element can be chosen more than once;
+  - Without replacement - a population element can be selected only once.
+
+  - 3 arguments: (population-vector, sample-`size`, `replace`)
+    - `size` - size of the desired sample;
+    - `replace` - determines if sampling is with or without replacement.
+```{r}
+x = 1:10
+
+sample(x) # randomly sample population vector x, and generate sample vector of same length as vector x
+
+sample(x) # sample again to get a different order
+
+sample(x, size = 5) # generates a sample of 5 elements
+
+sample(x, size = 5) # the elements chosen as well as their order will be different
+
+```
+
+`sample()` will generate a random permutation of vector `x`, containing elements from 1 to 10.
+
+```{r}
+sample(x, size = 15)
+```
+```{r}
+sample(x, size = 15, replace = TRUE)
+```
+
+- Let's toss a coin 10 times to generate a vector `v` that contains `Heads` or `Tails` for each toss result. Need to sample with replacement with `replace = TRUE`.
+
+```{r}
+# sample of 10 consecutive coin tosses
+sample(c("Heads", "Tails"), size = 10, replace = TRUE)
+```
+
+```{r}
+# creating sample genders for 100 students
+sample(c("Male", "Female"), 100, replace = T)
+```
+
+```{r}
+# creating sample grades for 100 students
+sample(LETTERS[1:5], 100, replace = T)
+```
+
+```{r}
+# generate data of students in a class
+
+students = data.frame(id = 1:100,
+                      age = as.integer(rnorm(100, mean = 25, sd = 6)),
+                      pronoun = sample(c("He/Him", "She/Her", "Ze/Zed"), 100, replace = TRUE),
+                      grade = sample(LETTERS[1:5], 100, replace = TRUE)
+                      )
+students
+```
+
+## Simulation (2)
+  ### Generating Missing Values
+  
+`NA` in R represents **missing values**.
+
+To simulate `NA` in test data, use the `is.na()` function. 
+
+```{r}
+a = c(1:10)
+
+is.na(a)
+```
+
+```{r}
+a[4] = NA
+a[7] = NA
+
+is.na(a)
+```
+
+Another way, perhaps more efficient:
+```{r}
+a = c(1:10)
+
+is.na(a) = c(4,7)
+
+is.na(a)
+```
+
+```{r}
+# sample function to randomly select 10 indices out of 1:100
+# then is.na will assign NA to those locations:
+
+is.na(students$age) = sample(1:100, 10)
+
+is.na(students$age)
+```
+
+```{r}
+str(students)
+
+summary(students)
+```
+
+  ### Generating sequences
+  
+- Use `seq()` to make sequences of numbers flexibly. 
+  - 3 arguments:
+    - (starting-number, ending-number, `by` specifies an increment)
+    
+```{r}
+# sequence 1 to 20 by increment of .5
+
+seq(1, 20, by = 0.5)
+```
+
+- The function `rep()` repeats values. Makes a vector of repeated values.
+```{r}
+# create 10 zeroes:
+rep(0, times = 10)
+
+# repeats c(1,2) 10 times:
+rep(c(1,2), times = 10)
+
+# repeats first value 10 times and then second value another 10 times:
+rep(c(1,2), each = 10)
+
+# repeats 1111122222 five times
+rep(c(1,2), times = 5, each = 5)
+```
+
+##### Questions:
+  1. What will `rep(c(1,2), each = 5, times = 5)` give?
+
+```{r}
+rep(c(1,2), each = 5, times = 5)
+```
+

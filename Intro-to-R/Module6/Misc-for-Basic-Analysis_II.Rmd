@@ -1,0 +1,54 @@
+---
+output:
+  rmdformats::readthedown:
+    self_contained: yes
+    thumbnails: yes
+    lightbox: yes
+    gallery: no
+    highlight: tango
+  output: default
+title: "Indiana Bloomington DSE R Notebook"
+---
+# Time & Date in R (1)
+## Time and date in R
+
+There are three built-in date and time data classes:
+  - **Date**: Designed for data with dates only, no times;
+  - **POSIXct**: Used when both date and time are present, *"ct" stands for calendar time*;
+  - **POSIXlt**: Used when both date and time are present; enables easy extraction of specific components from the date/time data. *"lt" stands for local time.*
+  
+#### Date
+
+  - `as.Date()` handles dates without times. 
+    - Default format is **"yyyy-mm-dd"** and **"yyyy/mm/dd"**
+
+
+```{r}
+# create a date variable:
+dt1 <- as.Date("2020-02-14")
+dt1
+
+```
+  - Aside from the **default format**, the other date formats need to be specified when creating dates. The `as.Date()` function allows different input formats through its format argument.
+  
+  
+```{r}
+dt3 <- as.Date("01/08/2020", format = "%m/ %d/ %Y")
+dt3
+
+dt4 <- as.Date("February 29, 2020", format = "%B %d, %Y")
+dt4
+
+dt5 <- as.Date("20Jan20", format = "%d %b %y")
+dt5
+```
+
+| Symbol |Meaning| Example |
+|:-------|:-------:|:-------:|
+|**%d**  |day as a number (01-31)|01-31|
+|**%a**, **%A**|abbreviated weekday, unabbreviated weekday|Mon, Monday|
+|**%m** |month (01-12)|01-12|
+|**%b**, **%B**|abbreviated month, unabbreviated month|Jan, January|
+|**%y**, **%Y**|2-digit year, 4-digit year|20, 2020|
+
+
