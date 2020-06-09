@@ -1,6 +1,6 @@
 package helloworld;
 
-public class Car {	
+public abstract class Car {	
 	
 	String make;
 	String model;
@@ -10,6 +10,12 @@ public class Car {
 	int mileage;
 	private String VIN;
 	static String emergencyNumber = "911";
+	public String publicStr = "public";
+	protected String protectedStr = "protected";
+	private String privateStr = "private";
+	public abstract void fuel();
+	public static String[] VINs = new String[100];
+	public static int currentIndex = 0; 
 	
 	public Car(String make, String model, int year, String color) {
 	
@@ -44,4 +50,5 @@ public class Car {
 	void runFor(int hour) {
 		mileage += speed * hour;
 	}
+
 }

@@ -3,7 +3,7 @@ package helloworld; // The file belongs to a package called "helloworld".
 public class HelloWorld {	// The class HelloWorld starts here...
 
 	public static void main(String[] args) {	// Defines a method in the class
-		Car aCar = new Car("Honda", "Accord", 1998, "white");
+		Car aCar = new Sedan("Honda", "Accord", 1998, "white");
 		
 		System.out.println("My car's year is: " + aCar.year);
 		System.out.println("Contact this number in case of emergency: "+ Car.emergencyNumber);
