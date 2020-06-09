@@ -4,9 +4,16 @@ public class HelloWorld {	// The class HelloWorld starts here...
 
 	public static void main(String[] args) {	// Defines a method in the class
 		Car aCar = new Sedan("Honda", "Accord", 1998, "white");
+		int[] integers = new int[5];
 		
 		System.out.println("My car's year is: " + aCar.year);
 		System.out.println("Contact this number in case of emergency: "+ Car.emergencyNumber);
+		
+		for(int i = 0; i < 5; i++) {
+			integers[i] = i;
+			System.out.println(integers[i]);
+		}
+
 		printSth(5);
 		printSth(3.3, 7.7);
 		printSth("Good");
