@@ -1,11 +1,13 @@
 package MakeCar;
+import java.util.Scanner;
+
 
 public class Car {	
 	
 	String make;
 	String model;
 	int year;
-	String color;
+	private String color;
 	int speed;
 	int mileage;
 	private String VIN;
@@ -36,7 +38,19 @@ public class Car {
     
     public String toString() {
 		return make + " " + model + " " + year + " " + color;
-	}
+    }
+    
+    public String getColor() {
+        Scanner col = new Scanner(System.in);
+        System.out.println("What color car? ");
+        String clr = col.nextLine();
+        return clr;
+        
+    }
+
+    public void changeColor(String color) {
+        this.color = color;
+    }
 
 	public static void main(String[] args) {
 		

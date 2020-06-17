@@ -26,7 +26,11 @@ public class makeCar {
 
         Car newCar = new Car(inMake, inModel, Integer.parseInt(inYear), inColor);
 
+        ord.close();
+
         System.out.println("Here is your new vehicle: " + newCar.toString());
-          
+
+        
+        newCar.changeColor(newCar.getColor());
     }
 }
