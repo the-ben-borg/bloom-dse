@@ -41,10 +41,7 @@ public class Car {
     }
     
     public String getColor() {
-        Scanner col = new Scanner(System.in);
-        System.out.println("What color car? ");
-        String clr = col.nextLine();
-        return clr;
+        return color;
         
     }
 
