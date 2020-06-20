@@ -8,8 +8,8 @@ public class Car {
 	String model;
 	int year;
 	private String color;
-	int speed;
-	int mileage;
+	private int speed;
+	private int mileage;
 	private String VIN;
 	static String emergencyNumber = "911";
 	public String publicStr = "public";
