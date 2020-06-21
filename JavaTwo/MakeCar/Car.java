@@ -1,5 +1,5 @@
 package MakeCar;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Car {	
@@ -48,6 +48,22 @@ public class Car {
     public void changeColor(String color) {
         this.color = color;
     }
+    
+    public int getSpeed() {
+    	return speed;
+    }
+    
+    public int getMileage() {
+    	return mileage;
+    }
+    
+//    public static String[] parseCar(Scanner getCar) {
+//    	String delims = "[, ]+";
+//    	String str = getCar.nextLine();
+//    	String[] tokens = str.split(delims);
+//    	return tokens;
+//    	
+//    }
 
 	public static void main(String[] args) {
 		
@@ -56,6 +72,10 @@ public class Car {
 
 	void speedUp(int speedChange) {
 		speed += speedChange;
+		
+		if(speed >= 140) {
+			speed = 140;
+		}
 	}
 	
 	void speedDown(int speedChange) {

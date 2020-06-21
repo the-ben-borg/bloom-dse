@@ -1,16 +1,14 @@
 # Recursive function to print first 8 Fibonacci numbers
-seq = []
+seqa = []
 
 def fib(n):
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
+    if (n <= 2):
+        seqa.append(1) 
     else:
-        f = fib(n-1) + fib(n-2)
-        seq.append(f)
-        return n - 1
-        print(seq)
+        f = (fib(n-1) + fib(n-2))
+        seqa.append(f)
+        return f
+    
 
 
 # Iterative function to print first 8 Fibonacci numbers
@@ -34,3 +32,4 @@ def fibonacci_loop(n):
 
 fibonacci_loop(8)
 fib(8)
+print(seqa)
