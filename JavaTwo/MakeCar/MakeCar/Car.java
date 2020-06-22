@@ -39,6 +39,8 @@ public class Car {
     public String toString() {
 		return make + " " + model + " " + year + " " + color;
     }
+
+    // public
     
     public String getColor() {
         return color;
