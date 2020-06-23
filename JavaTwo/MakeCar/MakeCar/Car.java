@@ -2,7 +2,7 @@ package MakeCar;
 import java.util.*;
 
 
-public class Car {	
+public abstract class Car {
 	
 	String make;
 	String model;
@@ -15,7 +15,7 @@ public class Car {
 	public String publicStr = "public";
 	protected String protectedStr = "protected";
 	private String privateStr = "private";
-	// public abstract void fuel();
+	public abstract void fuel();
 	public static String[] VINs = new String[100];
 	public static int currentIndex = 0; 
 	
@@ -29,6 +29,13 @@ public class Car {
 		this.speed = 0;
 		this.mileage = 0;
 		VIN = String.valueOf((int)(Math.random()*1000));
+		for (String existingVIN: VINs) {
+			if(VIN == existingVIN) {
+				VIN = String.valueOf((int)(Math.random()*1000));
+			}
+		}
+		VINs[currentIndex] = VIN;
+		currentIndex++;
 	}
 	
 	public Car(String make, String model, String color, int year) {
@@ -39,8 +46,6 @@ public class Car {
     public String toString() {
 		return make + " " + model + " " + year + " " + color;
     }
-
-    // public
     
     public String getColor() {
         return color;
@@ -58,17 +63,18 @@ public class Car {
     public int getMileage() {
     	return mileage;
     }
-    
-//    public static String[] parseCar(Scanner getCar) {
-//    	String delims = "[, ]+";
-//    	String str = getCar.nextLine();
-//    	String[] tokens = str.split(delims);
-//    	return tokens;
-//    	
-//    }
 
 	public static void main(String[] args) {
-		
+		Car civic = new Sedan ("Honda", "Civic", 1996, "Blue");
+
+		civic.speedUp();
+		civic.runFor(1);
+		civic.speedUp();
+		civic.runFor(1);
+		civic.speedDown();
+		civic.speedDown();
+
+		System.out.println("mileage: " + civic.mileage + " speed: " + civic.speed);
 
 	}
 
@@ -79,10 +85,16 @@ public class Car {
 			speed = 140;
 		}
 	}
+
+	void speedUp() {
+		speed += 10;
+	}
 	
 	void speedDown(int speedChange) {
 		speed -= speedChange;
 	}
+
+	void speedDown() { speed -= 10; }
 	
 	void runFor(int hour) {
 		mileage += speed * hour;
